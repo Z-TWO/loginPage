@@ -1,0 +1,17 @@
+package com.loginPage.service;
+
+import com.loginPage.dao.DBMain;
+import com.loginPage.model.User;
+
+public class userService {
+	
+	//username，teleNum,email存在查询
+	public static boolean check(String checkType,String value) {
+		User user = DBMain.selectUser(checkType,value);
+		if (user != null) {
+			return false;//不通过
+		}else {
+			return true;
+		}
+	}
+}

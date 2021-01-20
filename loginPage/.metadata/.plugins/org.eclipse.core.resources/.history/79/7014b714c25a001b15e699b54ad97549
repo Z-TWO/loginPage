@@ -1,0 +1,28 @@
+package com.loginPage.service;
+
+import com.loginPage.dao.DBMain;
+import com.loginPage.model.User;
+
+public class userService {
+	
+	//username，teleNum,email存在查询
+	public static boolean check(String checkType,String value) {
+		User user;
+		switch (checkType) {
+		case "useranme":
+			user = DBMain.selectUser("select * from user where username=?",value);
+			break;
+		case "teleNum":
+			user = DBMain.selectUser("select * from user where teleNum=?",value);
+			break;
+		case "email":
+			user = DBMain.selectUser("select * from user where email=?",value);
+			break;
+		}
+		if (user != null) {
+			return false;//不通过
+		}else {
+			return true;//通过
+		}
+	}
+}

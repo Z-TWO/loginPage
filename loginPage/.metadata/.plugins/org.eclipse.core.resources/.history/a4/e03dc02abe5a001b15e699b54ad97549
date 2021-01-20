@@ -1,0 +1,33 @@
+package com.loginPage.test;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.loginPage.util.DBUtil;
+
+public class test {
+	static String sql = "select * from user where username=?";
+	
+	public static void main(String[] args) {
+		Connection connection;
+		PreparedStatement preparedStatement;
+		ResultSet resultSet;
+		
+		connection = DBUtil.getConnction();
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, "用户名1");
+			resultSet = preparedStatement.executeQuery();
+			System.out.println(resultSet.next());
+//		while(resultSet.next()) {
+//			System.out.println("username:"+resultSet.getString("用户名1")+" password:"+resultSet.getString("password"));
+//		}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+}

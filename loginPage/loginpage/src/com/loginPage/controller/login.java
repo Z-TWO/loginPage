@@ -1,0 +1,48 @@
+package com.loginPage.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.loginPage.dao.DBMain;
+import com.loginPage.model.User;
+
+
+
+/**
+ * Servlet implementation class login
+ */
+public class login extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String sql_isContain = "select * from user where username=?";
+		
+		//判断是否已经存在该用户
+		boolean isContain = DBMain.isContain(username);
+		if(isContain) {
+			//存在
+			User user = DBMain.selectUser("sql_isContain",username);
+			if (user!=null && user.getPassword().equals(password)) {
+				response.sendRedirect(request.getContextPath()+"/web/user/userIndex.jsp");
+			}else {
+				//登陆失败
+				request.setAttribute("insertDiv","<div id=\"returnText\" style=\"display: block;>用户名或密码错误</div>");
+				request.getRequestDispatcher(request.getContextPath()+"/login.jsp").forward(request, response);
+			}
+		}else {
+			//登陆失败
+			request.setAttribute("insertDiv","<div id=\"returnText\" style=\"display: block;>用户名或密码错误</div>");
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+		}
+	}
+
+}

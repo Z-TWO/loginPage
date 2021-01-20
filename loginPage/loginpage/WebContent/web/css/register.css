@@ -1,0 +1,165 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+
+a{
+	text-decoration: none;
+	color: #000;
+}
+
+input{
+	outline: none;
+}
+
+body,html{
+	width: 100%;
+	height: 100%;
+}
+
+.main{
+	width: 100vw;
+	height: 100vh;
+	background: #F5F5F5;
+	z-index: -10;
+}
+
+.login_section{
+	width: 460px;
+	min-height: 400px;
+	background-color: rgba(255,255,255,1);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -300px;
+	margin-left: -230px;
+	border: solid 1px #E4ECF3;
+	padding-bottom: 20px;
+}
+
+.login_tab{
+	width: 100%;
+	height: 61px;
+	margin: 0 auto;
+}
+
+.login_tab a{
+	width: 50%;
+	display: block;
+	float: left;
+	text-align: center;
+	padding:20px 0 20px 0; 
+	color: #616161;
+}
+
+.login_tab a:first-child{
+	background-color: #F5F5F5;
+}
+
+.login_main{
+	width: 300px;
+	margin: 40px auto;
+}
+
+form{
+	display: block;
+	margin: 0 auto;
+}
+
+.form_group{
+	width: 100%;
+	height: 67px;
+}
+
+.form_group input:focus{
+	border: 1px solid #43BC60;
+}
+
+.form_group label{
+	margin-bottom: 5px;
+	display: inline-block;
+	color: rgba(0,0,0,.56);
+	font-weight: 700;
+}
+
+.form_group input{
+	width: 90%;
+	line-height: 1.4;
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+	padding: 8px 12px;
+}
+
+.check{
+	width: 100%;
+	color: rgba(0,0,0,.56);
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.check input{
+	margin-right: 3px;
+	line-height: 22px;
+}
+
+.submit{
+	width: 100%;
+}
+
+.submit input{
+	transition: background-color 0.5s ease;
+	width: 100%;
+	border: solid 1px #fff;
+	background-color: #43BC60;
+	line-height: 44px;
+	border-radius: 6px;
+	color: #fff;
+	font-size: 14px;
+	cursor: pointer;
+	margin-top: 5px;
+}
+
+.submit input:hover{
+	background-color: #36964d;
+}
+
+.link{
+	font-size: 14px;
+	color: #919191;
+}
+
+.link a{
+	color: #43BC60;
+}
+
+.link a:first-child{
+	margin-right: 5px;
+}
+
+.link a:last-child{
+	margin-left: 5px;
+}
+
+.link a:hover{
+	color: #36964d;
+}
+
+.form-control{
+	color: #616161;
+}
+
+.mb2{
+	margin-bottom: 20px;
+}
+
+.f16{
+	font-size: 16px;
+}
+
+.hidden_p{
+	color: #ED3E3E;
+	margin-bottom: 10px;
+	display: none;
+}

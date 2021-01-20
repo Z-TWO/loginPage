@@ -1,0 +1,11 @@
+package com.loginPage.service;
+
+import com.loginPage.dao.DBMain;
+
+public class userService {
+	
+	//username£¨teleNum,email¥Ê‘⁄≤È—Ø
+	public static void check(String checkType,String value) {
+		DBMain.isContain(value);
+	}
+}
