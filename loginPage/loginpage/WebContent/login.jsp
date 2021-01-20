@@ -18,16 +18,16 @@
 				<a href="${pageContext.request.contextPath }/register.jsp" class="f16">注册账号</a>
 			</div>
 			<div class="login_main">
-				<form action="login" method="post">
-				<c:if test="${insertDiv != null }">
-					${insertDiv }
-				</c:if>
-				<%--
+				<form method="post" action="login">
+<%-- 				<c:if test="${insertDiv != null }"> --%>
+<%-- 					${insertDiv } --%>
+<%-- 				</c:if> --%>
+				<%
 					Object insertDiv = request.getAttribute("insertDiv");
 					if(insertDiv != null){
 						out.print(insertDiv);
 					}
-				--%>
+				%>
 					<div id="returnText">用户名或密码错误</div>
 					<div class="form_group mb2" id="userDiv">
 						<label>账号</label>

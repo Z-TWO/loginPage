@@ -1,6 +1,5 @@
 package com.loginPage.dao;
 
-import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +11,6 @@ import com.loginPage.util.DBUtil;
 public class DBMain {
 	private static String sql_selAll = "select * from user";
 	private static String sql_inNew = "insert into user values(null,?,?,?,?,now(),now(),now())";
-	private static String sql_one = "select * from user where ?=?";
 	private static String sql_find = "select * from user where username=?";
 	
 	public static void main(String[] args) {
@@ -81,7 +79,7 @@ public class DBMain {
 				return false;
 			}
 		} catch (SQLException e) {
-			System.out.println("存在查询 有误！");
+			System.out.println("存在查询有误！");
 		}finally {
 			DBUtil.close(res, psta, con);
 		}

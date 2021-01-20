@@ -1,5 +1,6 @@
 package com.loginPage.controller;
 
+import java.io.Console;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,14 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 import com.loginPage.dao.DBMain;
 import com.loginPage.model.User;
 
-
-
-/**
- * Servlet implementation class login
- */
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,17 +26,18 @@ public class login extends HttpServlet {
 		
 		//判断是否已经存在该用户
 		boolean isContain = DBMain.isContain(username);
-		if(isContain) {
-			//存在
-			User user = DBMain.selectUser("sql_isContain",username);
+		if(isContain) {//数据库存在
+			User user = DBMain.selectUser(sql_isContain,username);
 			if (user!=null && user.getPassword().equals(password)) {
+				//登录成功
 				response.sendRedirect(request.getContextPath()+"/web/user/userIndex.jsp");
 			}else {
 				//登陆失败
 				request.setAttribute("insertDiv","<div id=\"returnText\" style=\"display: block;>用户名或密码错误</div>");
-				request.getRequestDispatcher(request.getContextPath()+"/login.jsp").forward(request, response);
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			}
 		}else {
+			System.out.println("登录失败");
 			//登陆失败
 			request.setAttribute("insertDiv","<div id=\"returnText\" style=\"display: block;>用户名或密码错误</div>");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);

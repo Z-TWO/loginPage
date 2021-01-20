@@ -29,14 +29,16 @@ public class register extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		request.setCharacterEncoding("utf-8");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String teleNum = request.getParameter("teleNum");
 		String email = request.getParameter("email");
 		if (!DBMain.isContain(username)) {
+			//创建并添加用户
 			User user = new User(username, password, teleNum, email);
 			DBMain.addUser(user);
+			//跳转到登录界面
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
 		}else {
 			System.out.println("用户已经存在，注册失败！");
 		}
