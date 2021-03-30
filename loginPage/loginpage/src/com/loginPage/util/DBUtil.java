@@ -9,36 +9,36 @@ import java.sql.Statement;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 public class DBUtil {
-	private static final String url = "jdbc:mysql://8.129.224.99:3306/students?useUnicode=true&characterEncoding=UTF-8&useSSL=false";
+	private static final String url = "jdbc:mysql://127.0.0.1:3306/students?useUnicode=true&characterEncoding=UTF-8&useSSL=false";
 	private static final String username = "root";
-	private static final String password = "kczx402!!!";
+	private static final String password = "root";
 	private static BasicDataSource dbcp;
 	
-	//´´½¨dbcpÊı¾İÔ´
+	//åˆ›å»ºdbcpæ•°æ®æº
 	static{
 		dbcp = new BasicDataSource();
 		dbcp.setDriverClassName("com.mysql.jdbc.Driver");
-		//´´½¨Á¬½Ó
+		//åˆ›å»ºè¿æ¥
 		dbcp.setUrl(url);
 		dbcp.setUsername(username);
 		dbcp.setPassword(password);
-		//ÉèÖÃ²ÎÊı
+		//è®¾ç½®å‚æ•°
 		dbcp.setInitialSize(5);
 		dbcp.setMaxTotal(20);
 		dbcp.setMinIdle(2);
 	}
 	
-	//´ÓÁ¬½Ó³Ø»ñÈ¡Á¬½Ó
+	//ä»è¿æ¥æ± è·å–è¿æ¥
 	public static Connection getConnction() {
 		try {
 			return dbcp.getConnection();
 		} catch (SQLException e) {
-			System.out.println("»ñÈ¡Á¬½ÓÊ§°Ü£¡");
+			System.out.println("è·å–è¿æ¥å¤±è´¥ï¼");
 		}
 		return null;
 	}
 	
-	//¹Ø±Õ×ÊÔ´
+	//å…³é—­èµ„æº
 	public static void close(ResultSet res, Statement sta, Connection con) {
 		if(res!=null)
 			try {
@@ -56,7 +56,7 @@ public class DBUtil {
 			}
 		if(con!=null)
 			try {
-				con.close();//dbcpµÄÁ¬½Óclose²¢²»ÊÇÕæÕıÒâÒåÉÏµÄ¹Ø±Õ£¬ÊÇ½«Á¬½Ó¹é»Øµ½dbcpÊı¾İÔ´
+				con.close();//dbcpçš„è¿æ¥closeå¹¶ä¸æ˜¯çœŸæ­£æ„ä¹‰ä¸Šçš„å…³é—­ï¼Œæ˜¯å°†è¿æ¥å½’å›åˆ°dbcpæ•°æ®æº
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
